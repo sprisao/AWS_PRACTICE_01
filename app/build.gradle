@@ -49,6 +49,9 @@ dependencies {
     // Amplify Auth dependency
     implementation 'com.amplifyframework:aws-auth-cognito:1.27.0'
 
+    // Timber
+    implementation 'com.jakewharton.timber:timber:5.0.1'
+
 
 
     testImplementation 'junit:junit:4.13.2'

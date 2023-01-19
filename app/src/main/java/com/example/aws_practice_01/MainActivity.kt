@@ -1,5 +1,6 @@
 package com.example.aws_practice_01
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -64,7 +65,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // MainActivity.kt
+// receive the web redirect after authentication
+    @Deprecated("Deprecated in Java")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        Backend.handleWebUISignInResponse(requestCode, resultCode, data)
+    }
+
     companion object {
         private const val TAG = "MainActivity"
     }
 }
+

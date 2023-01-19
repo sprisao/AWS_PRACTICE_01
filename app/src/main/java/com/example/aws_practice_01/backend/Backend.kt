@@ -2,6 +2,7 @@ package com.example.aws_practice_01.backend
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import com.amplifyframework.AmplifyException
 import com.amplifyframework.auth.AuthChannelEventName
 import com.amplifyframework.auth.AuthException
@@ -102,6 +103,13 @@ object Backend {
             { result -> Timber.i("sign in success $result") },
             { error: AuthException -> Timber.e("sign in failed $error") }
         )
+    }
+
+    fun handleWebUISignInResponse(requestCode: Int, resultCode: Int, data: Intent?){
+        Timber.d("handleWebUISignInResponse")
+        if(requestCode == AWSCognitoAuthPlugin.WEB_UI_SIGN_IN_ACTIVITY_CODE){
+            Amplify.Auth.handleWebUISignInResponse(data)
+        }
     }
 
 

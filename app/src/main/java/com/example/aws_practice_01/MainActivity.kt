@@ -10,6 +10,7 @@ import com.example.aws_practice_01.ui.adapter.NoteRecyclerViewAdapter
 import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -19,14 +20,15 @@ class MainActivity : AppCompatActivity() {
         setupRecyclerView(item_list)
     }
 
-    private fun setupRecyclerView(recyclerView: RecyclerView) {
+    // recycler view is the list of cells
+    private fun setupRecyclerView(recyclerView: RecyclerView?) {
 
         // update individual cell when the Note data are modified
         UserData.notes().observe(this, Observer<MutableList<UserData.Note>> { notes ->
-
             Log.d(TAG, "Note observer received ${notes.size} notes")
 
-            recyclerView.adapter = NoteRecyclerViewAdapter(notes)
+            // let's create a RecyclerViewAdapter that manages the individual cells
+            recyclerView?.adapter = NoteRecyclerViewAdapter(notes)
         })
     }
 
